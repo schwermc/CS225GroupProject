@@ -33,3 +33,7 @@ Character::~Character() {
 int Character::getPEOPLE() {
     return PEOPLE;
 }
+
+string Character::getName() {
+    return name;
+}
