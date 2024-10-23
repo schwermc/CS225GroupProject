@@ -3,15 +3,15 @@
 
 #include <iostream>
 #include "Character.h"
-//#include "Weapon.h"
-//#include "Spells.h"
+#include "Weapon.h"
+#include "Spells.h"
 
 using namespace std;
 
 class Player: public Character {
 private:
-//    Weapon weapon;
-//    Spells spells;
+    Weapon weapon;
+    //Spells *spells[];
     bool active;
 	string classType, guild;
 	int maxHealth, maxMana, strength, defense, speed, intelligence;
@@ -20,7 +20,11 @@ private:
 protected:
     
 public:
-
+    Player(string name, int amountOfSpells = 10);
+    ~Player();
+    void increaseStats();
+    // Change functions
+    // Get functions
 };
 
 #endif
