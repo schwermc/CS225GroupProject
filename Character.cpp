@@ -27,7 +27,7 @@ Character::Character(string name, string mainLanguage, string race, string sex,
 }
 
 Character::~Character() {
-    cout << "This person [" << name << "] no longer exists..." << endl;
+//    cout << "This person [" << name << "] no longer exists..." << endl;
 }
 
 int Character::getPEOPLE() {

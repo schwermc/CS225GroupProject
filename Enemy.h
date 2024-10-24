@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Enemy {
+class Enemy : public Character {
 private:
     int maxHealth, strength, defense, speed;
 	float currentHealth;

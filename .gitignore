@@ -1,0 +1,6 @@
+
+*.json
+/cmake-build-debug/.cmake
+/cmake-build-debug
+*.xml
+*.iml

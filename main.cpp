@@ -27,10 +27,10 @@ int main() {
     characters.emplace("Human", Player("Vorom Riz", 0));
     characters.emplace("Wood elf", Player("Erolith Wranxidor", 0));
     characters.emplace("Hill Dwarf", Player("Kikrunli Hammerhead", 9));
-    
-    // for (auto key : characters) {
-    //     cout << key.first << ": " << key.second.getName() << endl;
-    // }
+
+     for (auto key : characters) {
+         cout << key.first << ": " << key.second.getName() << endl;
+     }
     
     cout << "Am I Thrid" << endl;
     
