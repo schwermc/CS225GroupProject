@@ -8,6 +8,6 @@ using namespace std;
 
 void clearCin();
 
-void display(const Character*, cont string menu = "Options");
+void display(const Character*, const string menu = "Options");
 
 #endif
