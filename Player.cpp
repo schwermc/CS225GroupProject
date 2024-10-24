@@ -3,11 +3,13 @@
 #include "Player.h"
 
 Player::Player(string name, int amountOfSpells) : Character(name) {
-    //spells = new Spells[amountOfSpells];
+    spells = new Spells[amountOfSpells];
 }
 
 Player::~Player() {
-    //delete [] spells;
+    delete [] spells;
+    spells = NULL;
+    cout << "Player [" << name << "] no longer exists..." << endl;
 }
 
 // Increases x stats with y values

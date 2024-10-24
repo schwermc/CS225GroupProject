@@ -11,7 +11,7 @@ using namespace std;
 class Player: public Character {
 private:
     Weapon weapon;
-    //Spells *spells[];
+    Spells *spells;
     bool active;
 	string classType, guild;
 	int maxHealth, maxMana, strength, defense, speed, intelligence;
@@ -20,8 +20,8 @@ private:
 protected:
     
 public:
-    Player(string name, int amountOfSpells = 10);
-    ~Player();
+    Player(string name, int amountOfSpells = 0);
+    ~Player() override;
     void increaseStats();
     // Change functions
     // Get functions
