@@ -6,10 +6,8 @@ Player::Player(string name, int amountOfSpells) : Character(name) {
     spells = new Spells[amountOfSpells];
 }
 
-Player::~Player() {
+void Player::deleteSpells() {
     delete [] spells;
-    spells = NULL;
-    cout << "Player [" << name << "] no longer exists..." << endl;
 }
 
 // Increases x stats with y values

@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <climits>
+#include "Character.h"
 
 using namespace std;
 
 void clearCin();
 
-void display(const Character*, const string menu = "Options");
+void display(Character*, const string menu = "Options");
 
 #endif

@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include "Character.h"
-#include "Weapon.h"
+//#include "Weapon.h"
 #include "Spells.h"
 
 using namespace std;
 
 class Player: public Character {
 private:
-    Weapon weapon;
+    //Weapon weapon;
     Spells *spells;
     bool active;
 	string classType, guild;
@@ -21,7 +21,7 @@ protected:
     
 public:
     Player(string name, int amountOfSpells = 0);
-    ~Player() override;
+    void deleteSpells();
     void increaseStats();
     // Change functions
     // Get functions

@@ -6,14 +6,13 @@
 
 using namespace std;
 
-class Npc {
+class Npc: public Character {
 private:
 
 protected:
     
 public:
     Npc(string name);
-    ~Npc();
 };
 
 #endif

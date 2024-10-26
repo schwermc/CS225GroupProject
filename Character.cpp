@@ -26,14 +26,10 @@ Character::Character(string name, string mainLanguage, string race, string sex,
     this->alive = alive;
 }
 
-Character::~Character() {
-    cout << "This person [" << name << "] no longer exists..." << endl;
-}
-
 int Character::getPEOPLE() {
     return PEOPLE;
 }
 
-string Character::getName() {
+string Character::getName() const {
     return name;
 }

@@ -6,6 +6,7 @@
 * Resources:
 *   Dictionary: https://favtutor.com/blogs/cpp-dictionary
 *   Spells: https://roll20.net/compendium/dnd5e/Eldritch%20Blast#content
+*   Exit Codes: https://www.geeksforgeeks.org/exit-codes-in-c-c-with-examples/
 *******************************************************************************/
 #include <iostream>
 #include <map>
@@ -28,11 +29,14 @@ int main() {
     characters.emplace("Wood elf", Player("Erolith Wranxidor", 0));
     characters.emplace("Hill Dwarf", Player("Kikrunli Hammerhead", 9));
     
-    // for (auto key : characters) {
-    //     cout << key.first << ": " << key.second.getName() << endl;
-    // }
+    for (const pair<const string, Player>& key : characters) {
+        cout << key.first << ": " << key.second.getName() << endl;
+    }
     
-    cout << "Am I Thrid" << endl;
+    // Delete Player Sleeps
+    for (pair<const string, Player>& key : characters) {
+        key.second.deleteSpells();
+    }
     
     return 0;
 }

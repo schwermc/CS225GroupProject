@@ -20,10 +20,8 @@ public:
     Character(string name, string mainLanguage = "English", string race = "Human",
               string sex = "Male", int age = 20, float height = 5.8,
               float weight = 167.4, bool alive = true);
-    virtual ~Character();
 	int getPEOPLE();
-	
-	string getName();
+	string getName() const;
 };
 
 #endif

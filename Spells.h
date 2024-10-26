@@ -14,7 +14,6 @@ protected:
     
 public:
     Spells();
-    ~Spells();
     void setSpell(string type, string attackType = "Melee", int power = 20, float attackRate = .5);
     friend ostream& operator<<(ostream&, const Spells&);
 };

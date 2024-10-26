@@ -10,8 +10,6 @@ Enemy::Enemy(string name, int maxHealth, float currentHealth, int strength, int 
     this->speed = speed;
 }
 
-Enemy::~Enemy() { }
-
 int attack() {
     int damage = 0;
     return damage;    

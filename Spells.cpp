@@ -8,8 +8,6 @@ Spells::Spells() {
     attackRate = 1;
 }
 
-Spells::~Spells() { }
-
 void Spells::setSpell(string type, string attackType, int power, float attackRate) {
     this->type = type;
     this->attackType = attackType;
