@@ -7,3 +7,6 @@
 
 *9:52 am, 10/24/2024*
 <br> -> Add two functions (<< operator & setSpells) to the Spells files
+
+*12:05 pm, 10/26/2024*
+<br> -> Minor updates to most of the files due to **Exit Code 139** when running
