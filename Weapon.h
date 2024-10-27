@@ -7,14 +7,16 @@ using namespace std;
 
 class Weapon {
 private:
-    string type;
-	int attackType, attackPower, defensePower;
+    string type, attackType;
+	int attackPower, defensePower;
 	float attackRate;
 protected:
     
 public:
     Weapon();
-    ~Weapon();
+    void setWeapon(string type, string attackType, int attackPower, int defensePower, float attackRate);
+    friend ostream& operator(ostream&, const Weapon&)
+
 };
 
 #endif
