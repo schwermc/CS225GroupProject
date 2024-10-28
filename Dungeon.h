@@ -9,6 +9,8 @@ using namespace std;
 
 void clearCin();
 
-void display(Character*, const string menu = "Options");
+void displayMenu(const string menu, Character* = NULL, Character* = NULL, Character* = NULL);
+
+void printCharacter(Character*);
 
 #endif

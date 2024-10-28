@@ -33,3 +33,7 @@ int Character::getPEOPLE() {
 string Character::getName() const {
     return name;
 }
+
+bool Character::getAlive() const {
+    return alive;
+}

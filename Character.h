@@ -22,6 +22,7 @@ public:
               float weight = 167.4, bool alive = true);
 	int getPEOPLE();
 	string getName() const;
+	bool getAlive() const;
 };
 
 #endif
