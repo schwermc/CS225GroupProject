@@ -6,13 +6,10 @@
 
 using namespace std;
 
-class Npc: public Character {
-private:
-
-protected:
-    
+class Npc {
 public:
     Npc(string name);
+    void Dialogue();
 };
 
 #endif
