@@ -10,3 +10,6 @@
 
 *12:05 pm, 10/26/2024*
 <br> -> Minor updates to most of the files due to **Exit Code 139** when running
+
+*5:24 pm, 10/27/2024*
+<br> -> Minor updates to some of the files, mainly adding more functional game code
