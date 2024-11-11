@@ -12,11 +12,11 @@ private:
 	string type, attackType;
 	int power;
 	float attackRate;
-protected:
 
 public:
 	Spells();
 	void setSpell(string type, string attackType = "Melee", int power = 20, float attackRate = .5);
+	int getPower();
 	friend ostream& operator<<(ostream&, const Spells&);
 };
 
@@ -34,6 +34,10 @@ void Spells::setSpell(string type, string attackType, int power, float attackRat
 	this->attackRate = attackRate;
 }
 
+int Spells::getPower() {
+	return power;
+}
+
 ostream& operator<<(ostream &os, const Spells &s) {
 	os << s.type << " is a/an " << s.attackType << " that has " << s.power << " attack powers, and can be cast every " << s.attackRate << " minutes." << endl;
 	return os;
@@ -45,11 +49,11 @@ private:
 	string type, attackType;
 	int attackPower, defensePower;
 	float attackRate;
-protected:
 
 public:
 	Weapon();
 	void setWeapon(string type, string attackType, int attackPower, int defensePower, float attackRate);
+	int getAttackPower();
 	friend ostream& operator<<(ostream&, const Weapon&);
 
 };
@@ -68,6 +72,10 @@ void Weapon::setWeapon(string type, string attackType, int attackPower, int defe
 	this->attackPower = attackPower;
 	this->defensePower = defensePower;
 	this->attackRate = attackRate;
+}
+
+int Weapon::getAttackPower() {
+	return attackPower;
 }
 
 ostream& operator<<(ostream& os, const Weapon& w) {
@@ -182,6 +190,9 @@ public:
 	float getcurrentMana() const;
 	float getManaRegen() const;
 
+	int attack();
+	void takeDamage(int damage);
+
 	void setPlayer(string mainLanguage, string race, string sex, string classType,
 	               string guild, int age, int maxHealth, int maxMana, int strength,
 	               int defense, int speed, int intelligence, float height, float weight,
@@ -257,18 +268,30 @@ float Player::getManaRegen() const {
 	return manaRegen;
 }
 
+int Player::attack() {
+	int damage = weapon.getAttackPower() + rand()%5;
+	return damage;
+}
+
+void Player::takeDamage(int damage) {
+	currentHealth -= damage;
+	if (currentHealth <= 0) {
+		maxHealth = 0;
+		alive = false;
+	}
+}
+
 void Player::setPlayer(string mainLanguage, string race, string sex, string classType,
                        string guild, int age, int maxHealth, int maxMana, int strength, int defense,
                        int speed, int intelligence, float height, float weight, float currentHealth,
                        float currentMana, float manaRegen) {
-	// Set Character stats
 	this->Character::mainLanguage = mainLanguage;
 	this->Character::race = race;
 	this->Character::sex = sex;
 	this->Character::age = age;
 	this->Character::height = height;
 	this->Character::weight = weight;
-	// Set Player stats
+
 	this->classType = classType;
 	this->guild = guild;
 	this->maxHealth = maxHealth;
@@ -295,6 +318,7 @@ void Player::increaseStats() {
 	int amountOfStats = rand()%4 + 1;
 	int amountIncrease = 0;
 	int increasedStat = 0;
+	cout << name << "\'s stat(s) have increased!" << endl;
 
 	for (int i = 0; i < amountOfStats; i++) {
 		amountIncrease = rand()%7 + 1;
@@ -308,24 +332,24 @@ void Player::increaseStats() {
 			if (maxMana != 0) {
 				maxMana += amountIncrease;
 				currentMana = maxMana;
-				manaRegen += amountIncrease/manaRegen;
+				manaRegen += amountIncrease/(manaRegen*7);
 			}
 			else {
-				maxHealth += amountIncrease/2;
+				maxHealth += (amountIncrease/2 == 0)? 1 : amountIncrease/2;
 				currentHealth = maxHealth;
 			}
 			break;
 		case 3:
-			strength += amountIncrease/2;
+			strength += (amountIncrease/2 == 0)? 1 : amountIncrease/2;
 			break;
 		case 4:
-			defense += amountIncrease/2;
+			defense += (amountIncrease/2 == 0)? 1 : amountIncrease/2;
 			break;
 		case 5:
-			speed += amountIncrease/3;
+			speed += (amountIncrease/3 == 0)? 2 : amountIncrease/3;
 			break;
 		case 6:
-			intelligence += amountIncrease/3;
+			intelligence += (amountIncrease/3 == 0)? 2 : amountIncrease/3;
 			break;
 		}
 	}
@@ -373,18 +397,30 @@ private:
 	float currentHealth;
 
 public:
-	Enemy(string name, int maxHealth = 100, float currentHealth = 100,
-	      int strength = 50, int defense = 50, int speed = 25);
+	Enemy();
+	Enemy(string name);
+	int getcurrentHealth();
+	int getSpeed();
 	int attack();
 	void takeDamage(int damage);
 };
 
-Enemy::Enemy(string name, int maxHealth, float currentHealth, int strength, int defense, int speed) : Character(name) {
-	this->maxHealth = maxHealth;
-	this->currentHealth = currentHealth;
-	this->strength = strength;
-	this->defense = defense;
-	this->speed = speed;
+Enemy::Enemy() { }
+
+Enemy::Enemy(string name) : Character(name) {
+	maxHealth = (rand() % 50) + 50;
+	currentHealth = maxHealth;
+	strength = (rand() % 25) + 25;
+	defense = (rand() % 25) + 25;
+	speed = (rand() % 10) + 25;
+}
+
+int Enemy::getcurrentHealth() {
+	return currentHealth;
+}
+
+int Enemy::getSpeed() {
+	return speed;
 }
 
 int Enemy::attack() {
@@ -413,7 +449,7 @@ void Npc::dialogue() {
 	int dialogueNumber = rand() % 10;
 
 	if (dialogueNumber == 0)
-		cout << "The greatest villains are the ones who think they’re doing the right thing.";
+		cout << "The greatest villains are the ones who think they\'re doing the right thing.";
 
 	if (dialogueNumber == 1)
 		cout << "If a person stops fighting. They truly given up...";
@@ -425,13 +461,13 @@ void Npc::dialogue() {
 		cout << "There are three types of people. Those who are true to themselves, those who act,\n   and those who are multi-faced.";
 
 	if (dialogueNumber == 4)
-		cout << "Just because they refuse to diagnosis doesn't mean that the conditions weren't there.";
+		cout << "Just because they refuse to diagnosis doesn\'t mean that the conditions weren\'t there.";
 
 	if (dialogueNumber == 5)
 		cout << "There is a difference between being lonely and being alone.";
 
 	if (dialogueNumber == 6)
-		cout << "Don't apologize if you're going to take it back in the future.";
+		cout << "Don\'t apologize if you're going to take it back in the future.";
 
 	if (dialogueNumber == 7)
 		cout << "Betrayal never comes from your enemy. It comes from the people you trust most.";
@@ -440,7 +476,7 @@ void Npc::dialogue() {
 		cout << "Asking illogical people for logic is illogical.";
 
 	if (dialogueNumber == 9)
-		cout << "It's my opponent, not my enemy.";
+		cout << "It\'s my opponent, not my enemy.";
 }
 
 
@@ -448,6 +484,8 @@ void Npc::dialogue() {
 void clearCin();
 
 void displayMenu(const string menu, Character* = NULL, Character* = NULL, Character* = NULL);
+
+void battle(Player*, Player*, Player*);
 
 void printCharacter(const Player&);
 
@@ -567,7 +605,7 @@ int main() {
 		displayMenu("options");
 
 		// Loop through menus
-		while (party[0].getAlive() == true) {
+		while (party[0].getAlive()) {
 			cin >> userInput;
 
 			switch (userInput) {
@@ -591,7 +629,6 @@ int main() {
 					displayMenu("options");
 					break;
 				default :
-					displayMenu(" ");
 					displayMenu("options");
 				}
 				break;
@@ -601,10 +638,12 @@ int main() {
 				cin >> userInput;
 				switch (userInput) {
 				case '1':
-					cout << "You entered Battle!";
+					battle(&party[0], &party[1], &party[2]);
+					if (party[0].getAlive())
+						displayMenu("options");
 					break;
 				case '2':
-				    cout << endl << "Antodia: \"";
+					cout << endl << "Antodia: \"";
 					antodia.dialogue();
 					cout << "\"" << endl;
 					displayMenu("options");
@@ -614,7 +653,6 @@ int main() {
 					break;
 				default :
 					displayMenu(" ");
-					displayMenu("options");
 				}
 				break;
 
@@ -628,7 +666,6 @@ int main() {
 
 			default :
 				displayMenu(" ");
-				displayMenu("options");
 			}
 		}
 
@@ -674,9 +711,28 @@ void displayMenu(const string menu, Character *c1, Character *c2, Character *c3)
 		cout << "(3)  Back to Option Screen" << endl;
 		cout << "What would you like to do? ";
 	}
-	else {
-		cout << "No option selected..." << endl;
-	}
+	else
+		throw "The proper menu was not selected!";
+}
+
+void battle(Player *p1, Player *p2, Player *p3) {
+	vector<Enemy> enemies;
+	int amountOfEnemies = (rand() % 5) + 1;
+	string names[5] = {"Elf", "Orc", "Human", "Dragonborn", "shapechanging"};
+	enemies.resize(amountOfEnemies);
+	for (int i = 0; i < amountOfEnemies; i++)
+		enemies[i] = Enemy(names[rand()%5]);
+
+	cout << "You entered battle!" << endl;
+
+	enemies[1].takeDamage(p1->attack());
+
+	if (p1->getAlive())
+		p1->increaseStats();
+	if (p2->getAlive())
+		p2->increaseStats();
+	if (p3->getAlive())
+		p3->increaseStats();
 }
 
 void printCharacter(const Player &p) {
