@@ -452,7 +452,7 @@ void Npc::dialogue() {
 		cout << "The greatest villains are the ones who think they\'re doing the right thing.";
 
 	if (dialogueNumber == 1)
-		cout << "If a person stops fighting. They truly given up...";
+		cout << "If a person stops fighting. They have truly given up...";
 
 	if (dialogueNumber == 2)
 		cout << "So good at fitting in, that nobody ever saw them.";
