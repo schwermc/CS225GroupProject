@@ -408,7 +408,7 @@ public:
 Enemy::Enemy() { }
 
 Enemy::Enemy(string name) : Character(name) {
-	maxHealth = (rand() % 50) + 50;
+	maxHealth = (rand() % 20) + 10;
 	currentHealth = maxHealth;
 	strength = (rand() % 25) + 25;
 	defense = (rand() % 25) + 25;
@@ -461,7 +461,7 @@ void Npc::dialogue() {
 		cout << "There are three types of people. Those who are true to themselves, those who act,\n   and those who are multi-faced.";
 
 	if (dialogueNumber == 4)
-		cout << "Just because they refuse to diagnosis doesn\'t mean that the conditions weren\'t there.";
+		cout << "Just because they refuse to diagnosis doesn\'t mean that the conditions weren\'t\n   there.";
 
 	if (dialogueNumber == 5)
 		cout << "There is a difference between being lonely and being alone.";
