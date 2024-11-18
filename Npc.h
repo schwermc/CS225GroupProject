@@ -6,10 +6,10 @@
 
 using namespace std;
 
-class Npc {
+class Npc: public Character {
 public:
-    Npc(string name);
-    void Dialogue();
+	Npc(string name);
+	void dialogue();
 };
 
 #endif

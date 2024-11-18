@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <climits>
-#include "Character.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -11,6 +11,8 @@ void clearCin();
 
 void displayMenu(const string menu, Character* = NULL, Character* = NULL, Character* = NULL);
 
-void printCharacter(Character*);
+void battle(Player*, Player*, Player*);
+
+void printCharacter(const Player&);
 
 #endif

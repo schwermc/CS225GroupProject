@@ -8,15 +8,16 @@ using namespace std;
 
 class Enemy: public Character {
 private:
-    int maxHealth, strength, defense, speed;
+	int maxHealth, strength, defense, speed;
 	float currentHealth;
-protected:
-    
+
 public:
-    Enemy(string name, int maxHealth = 100, float currentHealth = 100,
-          int strength = 50, int defense = 50, int speed = 25);
-    int attack();
-    void takeDamage();
+	Enemy();
+	Enemy(string name);
+	int getcurrentHealth();
+	int getSpeed();
+	int attack();
+	void takeDamage(int damage);
 };
 
 #endif

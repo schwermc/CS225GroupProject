@@ -2,17 +2,31 @@
 #include <cstdlib>
 #include "Enemy.h"
 
-Enemy::Enemy(string name, int maxHealth, float currentHealth, int strength, int defense, int speed) : Character(name) {
-    this->maxHealth = maxHealth;
-    this->currentHealth = currentHealth;
-    this->strength = strength;
-    this->defense = defense;
-    this->speed = speed;
+Enemy::Enemy(string name) : Character(name) {
+	maxHealth = (rand() % 50) + 50;
+	currentHealth = maxHealth;
+	strength = (rand() % 25) + 25;
+	defense = (rand() % 25) + 25;
+	speed = (rand() % 10) + 25;
 }
 
-int attack() {
-    int damage = 0;
-    return damage;    
+int Enemy::getcurrentHealth() {
+	return currentHealth;
 }
 
-void takeDamage() { }
+int Enemy::getSpeed() {
+	return speed;
+}
+
+int Enemy::attack() {
+	int damage = (strength) - (rand()%25 + 1)/speed;
+	return damage;
+}
+
+void Enemy::takeDamage(int damage) {
+	currentHealth -= damage;
+	if (currentHealth <= 0) {
+		maxHealth = 0;
+		alive = false;
+	}
+}

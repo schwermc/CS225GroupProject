@@ -4,36 +4,36 @@
 
 Npc::Npc(string name) : Character(name) { }
 
-void Npc::Dialogue() {
+void Npc::dialogue() {
 	int dialogueNumber = rand() % 10;
-	
+
 	if (dialogueNumber == 0)
-		cout << "0"
+		cout << "The greatest villains are the ones who think they\'re doing the right thing.";
 
-	if (dialogueNumber == 1)
-		cout << "1";
+	else if (dialogueNumber == 1)
+		cout << "If a person stops fighting. They have truly given up...";
 
-	if (dialogueNumber == 2)
-		cout << "2";
+	else if (dialogueNumber == 2)
+		cout << "So good at fitting in, that nobody ever saw them.";
 
-	if (dialogueNumber == 3)
-		cout << "3";
+	else if (dialogueNumber == 3)
+		cout << "There are three types of people. Those who are true to themselves, those who act,\n   and those who are multi-faced.";
 
-	if (dialogueNumber == 4)
-		cout << "4";
+	else if (dialogueNumber == 4)
+		cout << "Just because they refuse to diagnosis doesn\'t mean that the conditions weren\'t\n   there.";
 
-	if (dialogueNumber == 5)
-		cout << "5";
+	else if (dialogueNumber == 5)
+		cout << "There is a difference between being lonely and being alone.";
 
-	if (dialogueNumber == 6)
-		cout << "6";
+	else if (dialogueNumber == 6)
+		cout << "Don\'t apologize if you're going to take it back in the future.";
 
-	if (dialogueNumber == 7)
-		cout << "7";
+	else if (dialogueNumber == 7)
+		cout << "Betrayal never comes from your enemy. It comes from the people you trust most.";
 
-	if (dialogueNumber == 8)
-		cout << "8";
+	else if (dialogueNumber == 8)
+		cout << "Asking illogical people for logic is illogical.";
 
-	if (dialogueNumber == 9)
-		cout << "9";
+	else
+		cout << "It\'s my opponent, not my enemy.";
 }

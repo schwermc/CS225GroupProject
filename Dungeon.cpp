@@ -24,20 +24,78 @@ void displayMenu(const string menu, Character *c1, Character *c2, Character *c3)
 		cout << "What would you like to do? ";
 	}
 	else if (menu == "look") {
-
+		cout << "There are enemies and Antodia here!" << endl;
+		cout << "(1)  Fight the enemies" << endl;
+		cout << "(2)  Talk to Antodia" << endl;
+		cout << "(3)  Back to Option Screen" << endl;
+		cout << "What would you like to do? ";
 	}
-	else {
-		cout << "No menu selected..." << endl;
-	}
+	else
+		throw "The proper menu was not selected!";
 }
 
-void printCharacter(Character *c) {
-    ofstream file(c->getName() + ".txt");
-    file << "Name:   " << c->getName() << endl;
-    file << "Status: ";
-    if (c->getAlive())
-        file << "Alive" << endl;
-    else
-        file << "Closed" << endl;
-    file.close();
+void battle(Player *p1, Player *p2, Player *p3) {
+	cout << "You entered battle!" << endl;
+}
+
+void printCharacter(const Player &p) {
+	ofstream file(p.getName() + ".txt");
+	file.width(14);
+	file << left << "Name:" << p.getName() << endl;
+
+	file.width(14);
+	file << "Status:";
+	if (p.getAlive())
+		file << "Alive" << endl;
+	else
+		file << "Dead" << endl;
+
+	file.width(14);
+	file << "Health:" << p.getcurrentHealth() << "/" << p.getMaxHealth() << endl;
+
+	if (p.getMaxMana() != 0)
+	{
+		file.width(14);
+		file << "Mana:" << p.getcurrentMana() << "/" << p.getMaxMana() << endl;
+		file.width(14);
+		file << "  Regen:" << p.getManaRegen() << endl;
+	}
+
+	file.width(14);
+	file << "STR:" << p.getStrength() << endl;
+	file.width(14);
+	file << "DEF:" << p.getDefense() << endl;
+	file.width(14);
+	file << "SPD:" << p.getSpeed() << endl;
+	file.width(14);
+	file << "INT:" << p.getIntelligence() << endl << endl;
+
+	file.width(14);
+	file << "Age:" << p.getAge() << endl;
+	file.width(14);
+	file << "Race:" << p.getRace() << endl;
+	file.width(14);
+	file << "Sex:" << p.getSex() << endl;
+	file.width(14);
+	file << "Height:" << p.getHeight() << endl;
+	file.width(14);
+	file << "Weight:" << p.getWeight() << endl;
+	file.width(14);
+	file << "Language:" << p.getLanguage() << endl << endl;
+
+	file.width(14);
+	file << "Class:" << p.getClass() << endl;
+	file.width(14);
+	file << "Guild:" << p.getGuild() << endl << endl;
+
+	file.width(10);
+	file << "Weapon:\n\t" << p.getWeapon();
+
+	for (int i = 0; i < p.getSpellSize(); i++) {
+		if (i == 0)
+			file << "Spells:" << endl;
+		file <<"   " << p.getSpells(i);
+	}
+
+	file.close();
 }
