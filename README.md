@@ -13,3 +13,7 @@
 
 *5:24 pm, 10/27/2024*
 <br> -> Minor updates to some of the files, mainly adding more functional game code
+
+*9:19 pm, 11/17/2024*
+<br> -> Major update to the files, from slight changes to new function
+>Need to finsihed the battle (combat) function for the code to enter 'Demo' playablity
