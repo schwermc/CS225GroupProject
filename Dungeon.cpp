@@ -40,6 +40,9 @@ void battle(Player *p1, Player *p2, Player *p3) {
 
 void printCharacter(const Player &p) {
 	ofstream file(p.getName() + ".txt");
+	if (!file.is_open())
+	    throw "File cannot open";
+	
 	file.width(14);
 	file << left << "Name:" << p.getName() << endl;
 
