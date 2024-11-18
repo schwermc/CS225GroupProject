@@ -4,7 +4,7 @@
 
 Npc::Npc(string name) : Character(name) { }
 
-void Npc::dialogue() {
+void Npc::dialogue() const {
 	int dialogueNumber = rand() % 10;
 
 	if (dialogueNumber == 0)

@@ -118,6 +118,7 @@ void Player::increaseStats() {
 	for (int i = 0; i < amountOfStats; i++) {
 		amountIncrease = rand()%7 + 1;
 		increasedStat = rand()%6 + 1;
+		
 		switch(increasedStat) {
 		case 1:
 			maxHealth += amountIncrease;

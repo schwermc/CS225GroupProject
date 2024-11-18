@@ -10,11 +10,11 @@ Enemy::Enemy(string name) : Character(name) {
 	speed = (rand() % 10) + 25;
 }
 
-int Enemy::getcurrentHealth() {
+int Enemy::getcurrentHealth() const {
 	return currentHealth;
 }
 
-int Enemy::getSpeed() {
+int Enemy::getSpeed() const {
 	return speed;
 }
 

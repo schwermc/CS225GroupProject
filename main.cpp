@@ -68,13 +68,12 @@ int main() {
 	characters[4].setPlayerSpell(7, "Sanctuary", "Short Range", 0, 1);
 	characters[4].setPlayerSpell(8, "Shield of Faith", "Mid Range", 0, 10);
 
-	for (const Player& key : characters) {
+	for (const Player& key : characters)
 		cout << key.getName() << endl;
-	}
 
 	cout << endl << "Which character do what to be your main character? (0-4) : ";
 	cin >> index;
-	while(!cin || (index < 0 || 4 < index)) {
+	while (!cin || (index < 0 || 4 < index)) {
 		clearCin();
 		cout << endl << "That is not one of the five integers you can input." << endl;
 		cout << "Please enter 0, 1, 2, 3, 4.\nWhat primary character do you want? ";
@@ -84,7 +83,7 @@ int main() {
 
 	cout << "What do you want you second character to be? ";
 	cin >> index;
-	while(!cin || (index < 0 || 4 < index)) {
+	while (!cin || (index < 0 || 4 < index)) {
 		clearCin();
 		cout << endl << "That is not one of the five integers you can input." << endl;
 		cout << "Please enter 0, 1, 2, 3, 4.\nWhat secondary character do you want? ";
@@ -94,7 +93,7 @@ int main() {
 
 	cout << "What do you want the third character to be? ";
 	cin >> index;
-	while(!cin || (index < 0 || 4 < index)) {
+	while (!cin || (index < 0 || 4 < index)) {
 		clearCin();
 		cout << endl << "That is not one of the five integers you can input." << endl;
 		cout << "Please enter 0, 1, 2, 3, 4.\nWhat triciary character do you want? ";
@@ -130,11 +129,12 @@ int main() {
 		// Loop through menus
 		while (party[0].getAlive()) {
 			cin >> userInput;
-
+            
 			switch (userInput) {
 			case 'T':
 				displayMenu("teams", &party[0], &party[1], &party[2]);
 				cin >> userInput;
+				
 				switch (userInput) {
 				case '1':
 					party[0].printStats();
@@ -163,6 +163,7 @@ int main() {
 			case 'R':
 				displayMenu("look");
 				cin >> userInput;
+				
 				switch (userInput) {
 				case '1':
 					battle(&party[0], &party[1], &party[2]);

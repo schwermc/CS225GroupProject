@@ -14,8 +14,8 @@ private:
 public:
 	Enemy();
 	Enemy(string name);
-	int getcurrentHealth();
-	int getSpeed();
+	int getcurrentHealth() const;
+	int getSpeed() const;
 	int attack();
 	void takeDamage(int damage);
 };

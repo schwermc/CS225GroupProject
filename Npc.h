@@ -9,7 +9,7 @@ using namespace std;
 class Npc: public Character {
 public:
 	Npc(string name);
-	void dialogue();
+	void dialogue() const;
 };
 
 #endif

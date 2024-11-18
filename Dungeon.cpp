@@ -53,8 +53,7 @@ void printCharacter(const Player &p) {
 	file.width(14);
 	file << "Health:" << p.getcurrentHealth() << "/" << p.getMaxHealth() << endl;
 
-	if (p.getMaxMana() != 0)
-	{
+	if (p.getMaxMana() != 0) {
 		file.width(14);
 		file << "Mana:" << p.getcurrentMana() << "/" << p.getMaxMana() << endl;
 		file.width(14);

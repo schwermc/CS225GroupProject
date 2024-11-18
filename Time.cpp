@@ -29,7 +29,6 @@ void Time::finishTime() {
 }
 
 ostream& operator<<(ostream &os, const Time &t) {
-	os << "Game session was " << setfill('0') << setw(2) << t.hour << ":" << setfill('0') << setw(2) << t.minute << ":" << setfill('0') << setw(2)
-	   << t.second << " long." << endl;
+	os << "Game session was " << setfill('0') << setw(2) << t.hour << ":" << setfill('0') << setw(2) << t.minute << ":" << setfill('0') << setw(2) << t.second << " long." << endl;
 	return os;
 }
