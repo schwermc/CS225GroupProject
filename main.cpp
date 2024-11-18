@@ -4,6 +4,7 @@
 * Purpose:   RPG Dungeon Game
 * Version:   1.0 Nov 13, 2024
 * Resources:
+*   Time: https://www.w3schools.com/cpp/cpp_date.asp
 *   Spells: https://roll20.net/compendium/dnd5e/Eldritch%20Blast#content
 *   Exit Codes: https://www.geeksforgeeks.org/exit-codes-in-c-c-with-examples/
 *******************************************************************************/
