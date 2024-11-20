@@ -19,7 +19,7 @@ int Enemy::getSpeed() const {
 }
 
 int Enemy::attack() {
-	int damage = (strength) - (rand()%25 + 1)/speed;
+	int damage = strength - speed;
 	return damage;
 }
 

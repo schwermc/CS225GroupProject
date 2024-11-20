@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Dungeon.h"
+#include "Enemy.h"
 
 void clearCin() {
 	cin.clear();
@@ -35,14 +36,24 @@ void displayMenu(const string menu, Character *c1, Character *c2, Character *c3)
 }
 
 void battle(Player *p1, Player *p2, Player *p3) {
+    // Filler function
+    Enemy testEnemy("Orc");
 	cout << "You entered battle!" << endl;
+	
+	do {
+	p1->takeDamage(testEnemy.attack());
+	cout << p1->getName() << " has taken " << testEnemy.attack() << " damage!" << endl;
+	testEnemy.takeDamage(p1->attack());
+	cout << testEnemy.getName() << " has taken " << p1->attack() << " damage!" << endl;
+	}
+	while (p1->getAlive() && testEnemy.getAlive());
+	
+	if (p1->getAlive())
+	    p1->increaseStats();
 }
 
 void printCharacter(const Player &p) {
 	ofstream file(p.getName() + ".txt");
-	if (!file.is_open())
-	    throw "File cannot open";
-	
 	file.width(14);
 	file << left << "Name:" << p.getName() << endl;
 
