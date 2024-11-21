@@ -35,21 +35,58 @@ void displayMenu(const string menu, Character *c1, Character *c2, Character *c3)
 		throw "The proper menu was not selected!";
 }
 
-void battle(Player *p1, Player *p2, Player *p3) {
-    // Filler function
-    Enemy testEnemy("Orc");
+void battle(Player* p1, Player* p2, Player* p3) {
+	vector<Enemy> enemies;
+	int amountOfEnemies = 3;
+	int tempIndex = 0;
+	string names[5] = {"Elf", "Orc", "Human", "Dragonborn", "Shapechanging"};
+	enemies.resize(amountOfEnemies);
+	for (int i = 0; i < amountOfEnemies; i++)
+		enemies[i] = Enemy(names[rand() % 5]);
+
 	cout << "You entered battle!" << endl;
-	
+
+	// Add turned baes using speed then attack rate
 	do {
-	p1->takeDamage(testEnemy.attack());
-	cout << p1->getName() << " has taken " << testEnemy.attack() << " damage!" << endl;
-	testEnemy.takeDamage(p1->attack());
-	cout << testEnemy.getName() << " has taken " << p1->attack() << " damage!" << endl;
+		tempIndex = rand() % amountOfEnemies;
+		enemies[tempIndex].takeDamage(p1->attack());
+		if (!enemies[tempIndex].getAlive()) {
+			amountOfEnemies--;
+			enemies.erase(enemies.begin() + tempIndex);
+		}
+		else
+			p1->takeDamage(enemies[tempIndex].attack());
+
+		if (p2->getAlive()) {
+			tempIndex = rand() % amountOfEnemies;
+			enemies[tempIndex].takeDamage(p2->attack());
+			if (!enemies[tempIndex].getAlive()) {
+				amountOfEnemies--;
+				enemies.erase(enemies.begin() + tempIndex);
+			}
+			else
+				p2->takeDamage(enemies[tempIndex].attack());
+		}
+
+		if (p3->getAlive()) {
+			tempIndex = rand() % amountOfEnemies;
+			enemies[tempIndex].takeDamage(p3->attack());
+			if (!enemies[tempIndex].getAlive()) {
+				amountOfEnemies--;
+				enemies.erase(enemies.begin() + tempIndex);
+			}
+			else
+				p3->takeDamage(enemies[tempIndex].attack());
+		}
 	}
-	while (p1->getAlive() && testEnemy.getAlive());
-	
+	while (p1->getAlive() && (enemies[0].getAlive() || enemies[1].getAlive() || enemies[2].getAlive()));
+
 	if (p1->getAlive())
-	    p1->increaseStats();
+		p1->increaseStats();
+	if (p2->getAlive())
+		p2->increaseStats();
+	if (p3->getAlive())
+		p3->increaseStats();
 }
 
 void printCharacter(const Player &p) {
