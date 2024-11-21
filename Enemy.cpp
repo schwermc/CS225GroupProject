@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include "Enemy.h"
 
+Enemy::Enemy() { }
+
 Enemy::Enemy(string name) : Character(name) {
 	maxHealth = (rand() % 50) + 50;
 	currentHealth = maxHealth;
